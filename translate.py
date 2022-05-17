@@ -9,4 +9,6 @@ def query(payload):
 
 input_query= getting_data()
 query_format={"inputs":input_query}
+print(query_format)
 output = query(query_format)
+print(output)
