@@ -1,3 +1,12 @@
+from getting_data import getting_data
+from transformers import pipeline
+model_checkpoint = "chanifrusydi/marian-finetuned-opus-en-id"
+translator = pipeline("translation", model=model_checkpoint)
+
+translated_text=translator(getting_data(1,'data/squad/train-v2.0.json'))
+
+
+'''Using inference API
 import requests
 from getting_data import getting_data
 API_URL = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-id"
@@ -12,3 +21,4 @@ query_format={"inputs":input_query}
 print(query_format)
 output = query(query_format)
 print(output)
+'''
