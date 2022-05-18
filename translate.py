@@ -1,10 +1,15 @@
-from getting_data import getting_data
+from matplotlib.pyplot import text
+from getting_data import getting_text_data
 from transformers import pipeline
-model_checkpoint = "chanifrusydi/marian-finetuned-opus-en-id"
-translator = pipeline("translation", model=model_checkpoint)
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-translated_text=translator(getting_data(1,'data/squad/train-v2.0.json'))
+tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-id")
+model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-id")
 
+translator = pipeline("translation", model=model, tokenizer=tokenizer)
+text=getting_text_data(1,'data/squad/train-v2.0.json')
+translated_text=translator(text)
+print(translated_text)
 
 '''Using inference API
 import requests
