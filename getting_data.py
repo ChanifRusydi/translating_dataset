@@ -4,6 +4,6 @@ def getting_data(index,source_file):
    train_data=json.load(train_file)
    train_file.close()
    text=train_data['data'][index]['paragraphs'][0]['context']
-   return first_text
+   return text
 
 getting_data()
