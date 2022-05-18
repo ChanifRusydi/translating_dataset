@@ -8,7 +8,9 @@ model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-id")
 
 translator = pipeline("translation", model=model, tokenizer=tokenizer)
 text=getting_text_data(1,'data/squad/train-v2.0.json')
+print(text)
 translated_text=translator(text)
+print("\n")
 print(translated_text)
 
 '''Using inference API
